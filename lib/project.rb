@@ -11,7 +11,7 @@ def self.all
   returned_titles = DB.exec("SELECT * FROM projects;")
   titles = []
   returned_titles.each() do |title|
-    name = title.fetch("name")
+    title = title.fetch("title")
     id = title.fetch("id").to_i
     titles.push(Project.new({:title => title, :id => id}))
   end
@@ -23,7 +23,13 @@ def save
   @id = result.first().fetch("id").to_i
 end
 
+def ==(project_to_compare)
+  (self.title() == project_to_compare.title()) && (self.id() == project_to_compare.id())
+end
 
+def self.clear
+  DB.exec("DELETE FROM projects *;")
+end
 
 
 
