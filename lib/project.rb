@@ -8,14 +8,15 @@ def initialize(attributes)
 end
 
 def self.all
-  returned_titles = DB.exec("SELECT * FROM projects;")
-  titles = []
-  returned_titles.each() do |title|
-    title = title.fetch("title")
-    id = title.fetch("id").to_i
-    titles.push(Project.new({:title => title, :id => id}))
+  returned_projects = DB.exec("SELECT * FROM projects;")
+  projects = []
+  returned_projects.each() do |project|
+    title = project.fetch("title")
+    id = project.fetch("id").to_i
+    projects.push(Project.new({:title => title, :id => id}))
+    binding.pry
   end
-  titles
+  projects
 end
 
 def save
