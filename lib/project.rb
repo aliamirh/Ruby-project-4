@@ -14,13 +14,13 @@ def self.all
     title = project.fetch("title")
     id = project.fetch("id").to_i
     projects.push(Project.new({:title => title, :id => id}))
-    binding.pry
+
   end
   projects
 end
 
 def save
-  result = DB.exec("INSERT INTO projects (title) VALUES ('#{@titlee}') RETURNING id;")
+  result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
   @id = result.first().fetch("id").to_i
 end
 
