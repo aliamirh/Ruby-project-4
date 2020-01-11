@@ -12,5 +12,5 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @projects = Project.all
-  erb :home
+  erb (:project)
 end

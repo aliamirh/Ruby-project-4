@@ -3,7 +3,6 @@
 <h2>Current Projects</h2>
 <% if @projects.any? %>
 <% @projects.each do |project| %>
-
 <ul>
   <li><a href="/project/<%= project.id %>" title="Project Details"><%=project.title%></a></li>
 </ul>
