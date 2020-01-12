@@ -25,7 +25,7 @@ get('/projects/new') do
 end
 
 post('/projects') do
-  title = params[:project_title]
+  title = params[:title]
   project = Project.new({:title => title, :id => nil})
   project.save()
   @projects = Project.all()
